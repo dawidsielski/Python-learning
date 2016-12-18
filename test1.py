@@ -115,11 +115,15 @@
 # increase_age()
 # print(age)
 
-#
-import math
-content = dir(math)
-print (content)
 
-import time
-content = dir(time)
-print(content)
+# import math
+# content = dir(math)
+# print (content)
+#
+# import time
+# content = dir(time)
+# print(content)
+
+#input
+keyboard_input = input("type your input: ")
+print(len(keyboard_input))
