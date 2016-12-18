@@ -69,15 +69,57 @@
 # dict = {"name" : 'Dawid', "surename" : "Sie", "age" : 21}
 # print(dict.keys())
 
-import time
-ticks = time.time()
-print(ticks)
-print(time.localtime())
-print(time.asctime(time.localtime()))
-clock = time.clock()
-print(clock)
+# import time
+# ticks = time.time()
+# print(ticks)
+# print(time.localtime())
+# print(time.asctime(time.localtime()))
+# clock = time.clock()
+# print(clock)
 
 
 # import calendar
 # cal = calendar.month(2016,12)
 # print(cal)
+
+# def pokaz(a,b = ''):
+#     print(len(a), end=" ")
+#     print(b)
+#
+# pokaz('amarantowy')
+
+# #Lambda
+# sum = lambda a,b: a+b
+#
+# print('Sum of two integers:', sum(2,2))
+
+# def fact(number):
+#     result = 1
+#     while number > 1:
+#         result *= number
+#         number -= 1
+#     return result
+#
+# print(len(str(fact(52))))
+
+
+#Namespaces and scoping
+# age = 21
+#
+# def increase_age():
+#     global age
+#     age += 1
+#     print(age)
+#
+# print(age)
+# increase_age()
+# print(age)
+
+#
+import math
+content = dir(math)
+print (content)
+
+import time
+content = dir(time)
+print(content)
