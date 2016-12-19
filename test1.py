@@ -124,6 +124,25 @@
 # content = dir(time)
 # print(content)
 
-#input
-keyboard_input = input("type your input: ")
-print(len(keyboard_input))
+# #input
+# keyboard_input = input("type your input: ")
+# print(len(keyboard_input))
+
+# #data input
+# doc = open("doc.txt", "r")
+# data = doc.readline()
+# print(data, end="")
+# data = doc.read(5)
+# print(data)
+#
+# for line in doc:
+#     print(line)
+# doc.close()
+
+write_file = open("write.txt", "w")
+s = "Writing to the file"
+for i in range(100):
+    write_file.write("%d, %s \n" %(i, s))
+write_file.close()
+
+print (write_file.mode)
