@@ -151,10 +151,15 @@
 # print(dir(os))
 
 
+# import re
+#
+# text = "Dawid Tomek Wacław Kolega"
+# text_split = re.split(r'\s*', "text here are some")
+#
+# for word in text_split:
+#     print(word)
+
 import re
-
-text = "Dawid Tomek Wacław Kolega"
-text_split = re.split(r'\s*', "text here are some")
-
-for word in text_split:
-    print(word)
+text = "Dadjf sdkjf asjhd  dawid.sielski@outlook.com kjdfhkdjh a@a.com"
+email = re.findall(r"([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)", text)
+print(email)
