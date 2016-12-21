@@ -139,10 +139,22 @@
 #     print(line)
 # doc.close()
 
-write_file = open("write.txt", "w")
-s = "Writing to the file"
-for i in range(100):
-    write_file.write("%d, %s \n" %(i, s))
-write_file.close()
+# write_file = open("write.txt", "w")
+# s = "Writing to the file"
+# for i in range(100):
+#     write_file.write("%d, %s \n" %(i, s))
+# write_file.close()
+#
+# print (write_file.mode)
 
-print (write_file.mode)
+# import os
+# print(dir(os))
+
+
+import re
+
+text = "Dawid Tomek Wacław Kolega"
+text_split = re.split(r'\s*', "text here are some")
+
+for word in text_split:
+    print(word)
