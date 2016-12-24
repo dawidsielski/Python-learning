@@ -10,9 +10,9 @@ string = 'dafciooo'
 string = string.capitalize()
 print(string)
 
-for x in [1,2,3] : 
+for x in [1,2,3] :
 	print (x,end=' ')
-print('\n')	
+print('\n')
 
 dict = {'Name': 'Dawid', 'Age': 21}
 print(dict['Age'])
