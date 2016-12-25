@@ -10,6 +10,3 @@ for i in a:
             break
 
 print(common_elements)
-
-
-# print(a.intersection(b))
