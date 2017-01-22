@@ -34,14 +34,40 @@ Suggested milestones for incremental development:
  -Fix main() to use the extract_names list
 """
 
+def extract_year(text):
+    match = re.findall(r"Popularity in \d\d\d\d", text)
+    year = str(match[0])
+    year = int(year[-4:])
+    return year
+
 def extract_names(filename):
   """
   Given a file name for baby.html, returns a list starting with the year string
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-  # +++your code here+++
-  return
+  html_file = open(filename, "r")
+  text = html_file.read()
+  html_file.close()
+  year = extract_year(text)
+
+  match = re.findall(r"<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>", text)
+  match = sorted(match, key = lambda match: match[1])
+  # print(match)
+
+  names = {}
+  for element in match:
+    names[element[1]] = str(element[0])
+    names[element[2]] = str(element[0])
+  names_sorted = sorted(names.keys())
+  # print(names_sorted)
+
+  output = []
+  output.append(year)
+  for name in names_sorted:
+    output.append(str(name) + " " + str(names[name]))
+  print(output)
+  return output
 
 
 def main():
@@ -60,7 +86,7 @@ def main():
     summary = True
     del args[0]
 
-  # +++your code here+++
+  extract_names(args[0])
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
 
