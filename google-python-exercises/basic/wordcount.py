@@ -44,6 +44,32 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
+def extract_word_list(filename):
+  f = open(filename, "r")
+  text = f.read()
+  f.close()
+  text = text.split()
+  words_list = {}
+  for word in text:
+    word = word.lower()
+    if word not in words_list:
+      words_list[word] = 1
+    else:
+      words_list[word] += 1
+  return words_list
+
+def print_words(filename):
+  words = extract_word_list(filename)
+  sorted_word_list = sorted(words.keys())
+  for word in sorted_word_list:
+    print(word, words[word])
+
+def print_top(filename):
+  words = extract_word_list(filename)
+  sorted_by_counts = sorted(words,key=words.get)
+  for value in sorted_by_counts[-20:]:
+    print(value , words[value])
+  return
 
 ###
 
@@ -51,7 +77,7 @@ import sys
 # calls the print_words() and print_top() functions which you must define.
 def main():
   if len(sys.argv) != 3:
-    print 'usage: ./wordcount.py {--count | --topcount} file'
+    print ('usage: ./wordcount.py {--count | --topcount} file')
     sys.exit(1)
 
   option = sys.argv[1]
@@ -61,7 +87,7 @@ def main():
   elif option == '--topcount':
     print_top(filename)
   else:
-    print 'unknown option: ' + option
+    print ('unknown option: ' + option)
     sys.exit(1)
 
 if __name__ == '__main__':
