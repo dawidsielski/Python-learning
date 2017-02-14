@@ -1,3 +1,4 @@
 import datetime
 
-print("Current datetime is:" ,datetime.datetime.now())
+while (True):
+    print("Current datetime is:" ,datetime.datetime.now())
