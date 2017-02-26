@@ -1,4 +1,4 @@
-def ifAnagram(s1 ,s2):
+def ifAnagram(s1, s2):
     alist1 = list(s1)
     alist2 = list(s2)
 
