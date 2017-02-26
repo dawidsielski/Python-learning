@@ -1,12 +1,20 @@
-#!/ust/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """Polish National Lottery calles "Duży lotek."""
 
 import random
 
-how_many_numbers = int(input("Enter how many numbers do you want to enter: "))
-max_number = int(input("Enter maximum number: "))
+try:
+    how_many_numbers = int(input("Enter how many numbers do you want to enter: "))
+    max_number = int(input("Enter maximum number: "))
+
+    if how_many_numbers > max_number:
+        print("You cannot have more numbers in given interval.")
+        exit()
+except:
+    print("Wrong input.")
+    exit()
 
 print("Enter {0} numbers from 1 to {1}".format(how_many_numbers, max_number))
 
