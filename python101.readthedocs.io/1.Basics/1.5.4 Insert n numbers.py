@@ -1,8 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# ~/python/04_1_listy.py
-
 input_tuple = input("Podaj liczby oddzielone przecinkami: ")
 input_list = input_tuple.split(",")
 
