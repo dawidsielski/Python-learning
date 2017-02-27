@@ -31,18 +31,12 @@ while len(triangle) < 3:
     else:
         print("Side must have positive value.")
 
-def unpack(triangle_sides):
-    return (triangle_sides[0], triangle_sides[1], triangle_sides[2])
+print(checkIfPossible(*triangle))
 
-
-a, b, c = unpack(triangle)
-
-print(checkIfPossible(a,b,c))
-
-if checkIfPossible(a,b,c):
+if checkIfPossible(*triangle):
     print("Your triangle is possible to make!")
-    if checkIfRightTriangle(a,b,c):
+    if checkIfRightTriangle(*triangle):
         print("Your triangle is also the right one.")
-    print("THe circumference of your triangle is {0} and the area is {1}".format(circumference(a,b,c), area(a,b,c)))
+    print("THe circumference of your triangle is {0} and the area is {1}".format(circumference(*triangle), area(*triangle)))
 else:
     print("Your triangle is not possible to make!")
