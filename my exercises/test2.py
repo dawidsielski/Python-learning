@@ -22,3 +22,11 @@ print(int("1001", 2))
 b = iter(seasons)
 print(next(b))
 print(next(b))
+
+
+panstwa = ['Polska', 'Niemcy', 'Francja']
+stolice = ['Warszawa', 'Berlin', 'Paryż']
+lista = zip(panstwa, stolice)
+slownik = dict(lista)
+
+print(slownik)
