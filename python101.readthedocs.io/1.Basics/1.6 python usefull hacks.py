@@ -54,3 +54,13 @@ print([ (x,y) for x in range(5) for y in range(3) ])
 
 numbers_bigger_than_four = filter(lambda x: x > 4, incremented_numbers)
 print("Numbers bigger than four ",list(numbers_bigger_than_four))
+
+pupils = [
+    ('jan','Nowak','1A',15),
+    ('ola','Kujawiak','3B',17),
+    ('andrzej','Bilski','2F',16),
+    ('kamil','Czuja','1B',14)
+]
+
+sorted_by_surename = sorted(pupils, key = lambda pupils: pupils[1])
+print(sorted_by_surename)
