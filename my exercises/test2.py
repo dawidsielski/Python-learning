@@ -29,4 +29,4 @@ stolice = ['Warszawa', 'Berlin', 'Paryż']
 lista = zip(panstwa, stolice)
 slownik = dict(lista)
 
-print(slownik)
+print(slownik.values())
