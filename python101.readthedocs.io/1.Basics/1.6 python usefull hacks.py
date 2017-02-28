@@ -63,4 +63,18 @@ pupils = [
 ]
 
 sorted_by_surename = sorted(pupils, key = lambda pupils: pupils[1])
-print(sorted_by_surename)
+print("Pupils sorted by surename ", sorted_by_surename)
+
+txt_file = open("text.txt", "w")
+for i in range(10):
+    txt_file.write("Dawid\n")
+txt_file.close()
+
+with open("text.txt", "r") as text_file:
+    for line in text_file:
+        print(line, end = "")
+
+print()
+
+for line in open('text.txt', 'r'):
+    print(line, end = "")
