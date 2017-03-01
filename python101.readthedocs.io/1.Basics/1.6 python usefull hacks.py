@@ -29,13 +29,21 @@ names = (element.capitalize() for element in words)
 
 for name in names:
     print(name)
-print(names)
+#print(names) will not work
 
 
 print([ (x,y) for x in range(5) for y in range(3) ])
 
 words = ['anna', 'ala', 'ela', 'wiola', 'ola']
 print([ [name, name[0]] for name in words if len(name) == 3 ])
+
+def names_filter(word):
+    if len(word) == 3:
+        return True
+    return False
+
+print(list(filter(names_filter, words)), "Using dedicated function")
+print(list(filter(lambda x: len(x) == 3, words)), "Using lambda function")
 
 def increment(number):
     """Increments number by 1"""
@@ -78,3 +86,27 @@ print()
 
 for line in open('text.txt', 'r'):
     print(line, end = "")
+
+
+def generate_even(n):
+    for i in range(n):
+        if i % 2 == 0:
+            yield i
+
+gen = generate_even(10)
+print(next(gen))
+print(next(gen))
+
+
+print("Generate factorial.")
+def generate_factorial(n):
+    number = 1
+    for i in range(1, n + 1):
+        number *= i
+        yield number
+
+gen = generate_factorial(10)
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
