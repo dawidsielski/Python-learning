@@ -47,3 +47,18 @@ for key, group in group_by_surename:
     for value in group:
         print(value)
     print()
+
+
+#product
+
+print(list(product("AB", "d")))
+print(list(product("AB", "d", "AB", "d")))
+print(list(product("AB", "d", repeat = 2)))
+
+#repeat
+
+print(list(map(pow, range(10), repeat(2)))) #because it is needed to constantly supply power to pow function
+
+
+#takewhile
+print(list(takewhile(lambda x : x < 5, [1,3,5,7,9,2])))
