@@ -11,10 +11,4 @@ print(my_counter)
 print(sorted(my_counter.elements()))
 print(my_counter.most_common(1))
 
-#subtract
 
-a = collections.deque('aaaxx')
-b = collections.deque('aaxx')
-c = collections.Counter(a)
-d = collections.Counter(b)
-print(c.subtract(d))
