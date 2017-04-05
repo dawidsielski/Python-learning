@@ -23,3 +23,9 @@ print(a)
 
 a = np.random.random((4,4)) * 10
 print(a)
+
+print(np.arange(4))
+
+
+x = np.linspace(10,20,8, endpoint = False) 
+print (x)
