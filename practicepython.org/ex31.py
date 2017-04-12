@@ -5,20 +5,25 @@ table = []
 for element in guessing_word_list:
     table.append([element, False])
 
-wrong_guesses = 6
+guesses_available = 6
+wrong_guesses = 0
 correct_guesses = 0
-while correct_guesses < len(guessing_word):
+while correct_guesses < len(guessing_word) and wrong_guesses < 6:
     user_guess = str(input("\nEnter user guess: ")).upper()
-    for element in table:
-        if element[0] == user_guess[0] and  element[1] == False:
-            correct_guesses += 1
-            element[1]= True
+    if user_guess[0] not in guessing_word_list:
+        wrong_guesses += 1
+        print("Wrong guess! Guesses left: {}".format(guesses_available - wrong_guesses))
+    else:
+        for element in table:
+            if element[0] == user_guess[0] and  element[1] == False:
+                correct_guesses += 1
+                element[1]= True
 
-    for element in table:
-        if element[1]:
-            print(element[0], end = "")
-        else:
-            print("_", end = "")
+        for element in table:
+            if element[1]:
+                print(element[0], end = "")
+            else:
+                print("_", end = "")
 
 if correct_guesses == len(guessing_word):
     print("\nEnd game!")
