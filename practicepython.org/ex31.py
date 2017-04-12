@@ -1,4 +1,11 @@
-guessing_word = "EVAPORATE"
+import random
+file_name = open("sowpods.txt", "r")
+content = file_name.readlines()
+
+random_word = content[random.randrange(len(content))]
+print(random_word)
+
+guessing_word = random_word
 guessing_word_list = list(guessing_word)
 
 table = []
