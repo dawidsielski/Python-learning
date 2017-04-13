@@ -7,8 +7,8 @@ birthdays = {
         'Donald Trump': '06/14/1946',
         'Rowan Atkinson': '01/6/1955'}
 
-with open("birthdays.json", "w") as f:
-    json.dump(birthdays, f)
+# with open("birthdays.json", "w") as f:
+#     json.dump(birthdays, f)
 
 user_input = input("Enter name and surename: ")
 print(user_input)
