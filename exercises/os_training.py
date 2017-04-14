@@ -25,3 +25,5 @@ for dirpath, dirnames, filenames in os.walk("C:/Users/Dawid/Desktop"):
 print(os.getcwd())
 print(os.path.isdir("google-python-exercises"))
 print(os.path.isfile("text.txt"))
+
+os.system("dir")
