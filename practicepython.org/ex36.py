@@ -12,13 +12,13 @@ data = json.load(file)
 months = list()
 for i in data.values():
     months.append(ref[i[:2]])
-print(months)
+# print(months)
 
 new = dict()
 for month in ref.values():
     new[month] = 0
 for month, count in Counter(months).items():
-    print(month, count)
+    # print(month, count)
     new[month] = count
 
 output_file("scientists.html")
