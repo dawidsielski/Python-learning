@@ -10,3 +10,4 @@ for element in airtravel:
 
 
 print(airtravel)
+airtravel_file.close()

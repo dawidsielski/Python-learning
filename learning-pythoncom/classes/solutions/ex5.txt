@@ -1,0 +1,22 @@
+% python
+>>> from set import Set
+>>> x = Set([1,2,3,4])          # runs __init__
+>>> y = Set([3,4,5])
+
+>>> x & y                       # __and__, intersect, then __repr__
+Set:[3, 4]
+>>> x | y                       # __or__, union, then __repr__
+Set:[1, 2, 3, 4, 5]
+
+>>> z = Set("hello")            # __init__ removes duplicates
+>>> z[0], z[-1]                 # __getitem__ 
+('h', 'o'
+
+>>> for c in z: print c,        # __getitem__ 
+...
+h e l o
+>>> len(z), z                   # __len__, __repr__
+(4, Set:['h', 'e', 'l', 'o'])
+
+>>> z & "mello", z | "mello"
+(Set:['e', 'l', 'o'], Set:['h', 'e', 'l', 'o', 'm'])

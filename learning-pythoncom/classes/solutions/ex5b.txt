@@ -1,0 +1,21 @@
+[See multiset.py]
+
+
+% python
+>>> from multiset import *
+>>> x = MultiSet([1,2,3,4])
+>>> y = MultiSet([3,4,5])
+>>> z = MultiSet([0,1,2])
+
+>>> x & y, x | y                               # 2 operands
+(Set:[3, 4], Set:[1, 2, 3, 4, 5])
+
+>>> x.intersect(y, z)                          # 3 operands
+Set:[]
+>>> x.union(y, z)
+Set:[1, 2, 3, 4, 5, 0]
+
+>>> x.intersect([1,2,3], [2,3,4], [1,2,3])     # 4 operands 
+Set:[2, 3]
+>>> x.union(range(10))                         # non-MultiSets work too
+Set:[1, 2, 3, 4, 0, 5, 6, 7, 8, 9]

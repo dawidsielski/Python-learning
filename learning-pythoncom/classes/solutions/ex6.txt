@@ -1,0 +1,6 @@
+[See lunch.py]
+
+
+% python lunch.py
+burritos
+pizza
