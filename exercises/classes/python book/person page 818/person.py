@@ -14,9 +14,24 @@ class Person:
         return "{} - {} - {}".format(self.name, self.job, self.pay)
 
 class Manager(Person):
+    def __init__(self, name, pay = 0):
+        Person.__init__(self, name, "Manager", pay)
     def giveRise(self, percentage, bonus = 10):
         Person.giveRise(self, (percentage + (bonus / 100)))
 
+class Department:
+    def __init__(self, *args):
+        if len(args) == 0:
+            self.workers = []
+        else:
+            self.workers = list(args)
+
+    def addPerson(self, person):
+        self.workers.append(person)
+
+    def showAll(self):
+        for element in self.workers:
+            print(element)
 
 
 def main():
@@ -35,9 +50,16 @@ def main():
     print(victor.job)
     print(victor.pay)
 
-    tom = Manager("Tom Wawrzyniak", "mgr", 10000)
+    tom = Manager("Tom Markowicz", 15000)
     tom.giveRise(11, 5)
     print(tom)
+
+    print()
+    programmers = Department(dawid, john)
+    programmers.showAll()
+    programmers.addPerson(tom)
+    print("\nAfter Tom addition")
+    programmers.showAll()
 
 if __name__ == "__main__":
     main()
