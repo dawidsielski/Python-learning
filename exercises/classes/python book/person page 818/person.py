@@ -1,7 +1,7 @@
 class Person:
     def __init__(self, name , job = None, pay = 0):
         self.name = name
-        self. job = job
+        self.job = job
         self.pay = pay
 
     def lastName(self):
@@ -10,6 +10,15 @@ class Person:
     def giveRise(self, percentage):
         self.pay = int(self.pay * (1 + percentage / 100))
     
+    def __repr__(self):
+        return "{} - {} - {}".format(self.name, self.job, self.pay)
+
+class Manager(Person):
+    def giveRise(self, percentage, bonus = 10):
+        Person.giveRise(self, (percentage + (bonus / 100)))
+
+
+
 def main():
     dawid = Person("Dawid Sielski", "dev", 2000)
     print(dawid)
@@ -25,6 +34,10 @@ def main():
     print(victor.name)
     print(victor.job)
     print(victor.pay)
+
+    tom = Manager("Tom Wawrzyniak", "mgr", 10000)
+    tom.giveRise(11, 5)
+    print(tom)
 
 if __name__ == "__main__":
     main()
