@@ -6,6 +6,8 @@ class Anything:
         return self.data
 
 class Anything2(Anything):
+    
+    @property
     def display(self):
         print(self.data)
 
@@ -18,7 +20,7 @@ def main():
 
     y = Anything2()
     y.set_data("Kazimierz")
-    y.display()
+    y.display
 
 
 if __name__ == "__main__":
