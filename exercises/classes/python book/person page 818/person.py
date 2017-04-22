@@ -61,5 +61,9 @@ def main():
     print("\nAfter Tom addition")
     programmers.showAll()
 
+    print(tom.__class__.__name__)
+    print(tom.__dict__.keys())
+
+
 if __name__ == "__main__":
     main()
