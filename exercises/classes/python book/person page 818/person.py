@@ -33,6 +33,12 @@ class Department:
         for element in self.workers:
             print(element)
 
+    def gatherAttrs(self):
+        attrs = []
+        for key in sorted(self.__dict__):
+            attrs.append('%s=%s' % (key, getattr(self, key)))
+        return ', '.join(attrs)
+
 
 def main():
     dawid = Person("Dawid Sielski", "dev", 2000)
@@ -61,8 +67,15 @@ def main():
     print("\nAfter Tom addition")
     programmers.showAll()
 
+    print(tom.__class__)
     print(tom.__class__.__name__)
     print(tom.__dict__.keys())
+    print("Dir of tom:\n", dir(tom))
+    print("\nElements in dir(tom) not starting from __:\n", list(name for name in dir(tom) if not name.startswith('__')))
+
+    print()
+    print(programmers.gatherAttrs())
+
 
 
 if __name__ == "__main__":
