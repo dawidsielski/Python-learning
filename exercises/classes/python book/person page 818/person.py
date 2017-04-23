@@ -76,6 +76,17 @@ def main():
     print()
     print(programmers.gatherAttrs())
 
+    import shelve
+    db = shelve.open("persondb")
+    for obj in (victor, tom, john, dawid):
+        db[obj.name] = obj
+    db.close()
+
+
+    database = shelve.open("persondb")
+
+    for element in database:
+        print("{} \t=> {}".format(element, database[element]))
 
 
 if __name__ == "__main__":
