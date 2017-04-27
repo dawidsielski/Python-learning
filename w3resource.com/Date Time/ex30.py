@@ -3,4 +3,5 @@ import datetime
 now = datetime.datetime.now()
 print()
 print(time.mktime(now.timetuple()))
+print(time.time())
 print()
