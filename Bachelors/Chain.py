@@ -11,6 +11,8 @@ class Chain:
         self.shape_height = self.roi_height()
         self.shape_width = self.roi_width(tree)
 
+        self.points = 0
+
     @staticmethod
     def first_black_pixel(tree):
         pixels = tree.load()
@@ -55,6 +57,46 @@ class Chain:
                 break
         return right_most - left_most
     
+    def border(self, tree):
+        pixels = tree.load()
+        for height in range(tree.size[1]):
+            for width in range(tree.size[0]):
+                if self.border_pixel(tree, width, height):
+                    self.points += 1
+
+
+    def border_pixel(self, tree, i, j):
+        pixels = tree.load()
+
+        # only consider black pixels
+        if(pixels[i, j] == 0): return False
+
+        #check left
+        if(j == 0): return True
+        if(j < 0):
+            if (pixels[i, j - 1] == 0): return True
+
+        #check up
+        if(i == 0): return True
+        if(i < 0):
+            if (pixels[i - 1, j] == 0): return True
+        
+        #check right
+        if(i == self.width): return True
+        if(i < self.width):
+            if (pixels[i, j + 1] == 0): return True
+        
+        #check down
+        if(i == self.height): return True
+        if(i < self.height):
+            if (pixels[i + 1, j] == 0): return True
+        
+        # no empty pixel around = not border pixel
+        return False
+
+
+
+
 
 def main():
     tree = Image.open("Acer campestre 1.png")
@@ -65,6 +107,11 @@ def main():
     c = Chain(tree)
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
+
+    c.border(tree)
+    print("Points: ", c.points)
+
+    tree.close()
 
 if __name__ == "__main__":
     main()
