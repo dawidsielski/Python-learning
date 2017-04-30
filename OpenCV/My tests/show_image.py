@@ -1,4 +1,12 @@
 import numpy as np
 import cv2
 
-print(cv2.__version__)
+cap = cv2.VideoCapture(0)
+
+while(True):
+    ret, frame = cap.read()
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    cv2.imshow('frame',gray)
+
+cap.release()
+cv2.destroyAllWindows()
