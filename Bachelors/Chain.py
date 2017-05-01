@@ -26,14 +26,15 @@ class Chain:
     def first_black_pixel(self):
         for height in range(self.height):
             for width in range(self.width):
+                # print(self.pixels[width, height])
                 if self.pixels[width, height] == 1:
-                    return (width, height)
+                    return [width, height]
 
     def last_black_pixel(self):
         for height in reversed(range(self.height)):
             for width in reversed(range(self.width)):
                 if self.pixels[width, height] == 1:
-                    return (width, height)
+                    return [width, height]
 
     def roi_height(self):
         return self.end[1] - self.begin[1]
@@ -43,7 +44,6 @@ class Chain:
         left_most = 0
         for width in range(self.width):
             for height in range(self.height):
-                # print(width, height, pixels[width, height])
                 if self.pixels[width, height] == 1:
                     left_most = width
                     break
@@ -66,15 +66,6 @@ class Chain:
                 if self.border_pixel(width, height):
                     self.points += 1
 
-    def chain_code_generator(self, i, j):
-        index = self.border_neighbors(i, j)
-        print(index)
-        self.visited[i, j] = 1
-
-        if self.visited[index[0], index[1]] == 0:
-            self.chain_code_generator(index[0], index[1])
-        else:
-            print()
 
     def border_pixel(self, i, j):
         
@@ -83,17 +74,17 @@ class Chain:
 
         #check left
         if(j == 0): return True
-        if(j < 0):
+        if(j > 0):
             if (self.pixels[i, j - 1] == 0): return True
 
         #check up
         if(i == 0): return True
-        if(i < 0):
+        if(i > 0):
             if (self.pixels[i - 1, j] == 0): return True
         
         #check right
-        if(i == self.width): return True
-        if(i < self.width):
+        if(j == self.width): return True
+        if(j < self.width):
             if (self.pixels[i, j + 1] == 0): return True
         
         #check down
@@ -110,7 +101,7 @@ class Chain:
         flag = False
 
         # check east
-        if(self.border_pixel(i, j) and not flag and self.visited[i, j + 1] == 0):
+        if(self.border_pixel(i, j + 1) and not flag and self.visited[i, j + 1] == 0):
             j += 1
             self.chain_code.append(0)
             self.perimiter += 1
@@ -141,7 +132,7 @@ class Chain:
             return index
 
         # check southwest
-        if(self.border_pixel(i, j) and not flag and self.visited[i, j + 1] == 0):
+        if(self.border_pixel(i + 1, j - 1) and not flag and self.visited[i + 1, j - 1] == 0):
             i += 1
             j -= 1
             self.chain_code.append(3)
@@ -153,7 +144,7 @@ class Chain:
 
         # check west
         if(self.border_pixel(i, j - 1) and not flag and self.visited[i, j - 1] == 0):
-            j += 1
+            j -= 1
             self.chain_code.append(4)
             self.perimiter += 1
             flag = True
@@ -198,15 +189,31 @@ class Chain:
         index = [i, j]
         return index
 
+    def chain_code_generator(self, i, j):
+        index = self.border_neighbors(i, j)
+        # print(index)
+        self.visited[i, j] = 1
+
+        if self.visited[index[0], index[1]] == 0:
+            self.chain_code_generator(index[0], index[1])
+        else:
+            print()
 
 
 def main():
+    acer = 'Acer campestre 1.png'
+    shape = 'shape1.png'
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    tree = Image.open(os.path.join(script_dir, 'Acer campestre 1.png'))
+    tree = Image.open(os.path.join(script_dir, shape))
+    # gray = tree.convert("L")
+    # bw = np.asarray(gray).copy()
+    # bw[bw < 255] = 0
+    # bw[bw == 255] = 255
+    imfile = tree.convert("1", dither = Image.NONE)
+    # imfile = Image.fromarray(bw)
+    imfile.save("result_bw.png")
 
-    print(script_dir)
-
-    c = Chain(tree)
+    c = Chain(imfile)
     print("Size of image", tree.size)
     print("Position of first black pixel: ", c.begin)
     print("Position of last black pixel: ", c.end)
@@ -214,6 +221,7 @@ def main():
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
 
+    # print(c.border_pixel(1000,1000))
 
     print("Chain code:\n")
     index = c.border_neighbors(c.begin[0], c.begin[1])
