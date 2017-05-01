@@ -1,4 +1,6 @@
 from PIL import Image
+import numpy as np
+import os.path
 
 class Chain:
     def __init__(self, tree):
@@ -12,6 +14,9 @@ class Chain:
         self.shape_width = self.roi_width(tree)
 
         self.points = 0
+        self.perimiter = 0
+
+        self.visited = np.zeros([self.width, self.height])
 
     @staticmethod
     def first_black_pixel(tree):
@@ -95,11 +100,12 @@ class Chain:
         return False
 
 
-
-
-
 def main():
-    tree = Image.open("Acer campestre 1.png")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    tree = Image.open(os.path.join(script_dir, 'Acer campestre 1.png'))
+    
+    print(script_dir)
+
     print("Size of image", tree.size)
     print("Position of first black pixel: ", Chain.first_black_pixel(tree))
     print("Position of last black pixel: ", Chain.last_black_pixel(tree))
@@ -108,8 +114,11 @@ def main():
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
 
+    import time
+    start = time.time()
     c.border(tree)
     print("Points: ", c.points)
+    print("Time execution: ", (time.time() - start) * 1000)
 
     tree.close()
 
