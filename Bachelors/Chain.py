@@ -66,9 +66,18 @@ class Chain:
                 if self.border_pixel(width, height):
                     self.points += 1
 
+    def chain_code_generator(self, i, j):
+        index = self.border_neighbors(i, j)
+        print(index)
+        self.visited[i, j] = 1
+
+        if self.visited[index[0], index[1]] == 0:
+            self.chain_code_generator(index[0], index[1])
+        else:
+            print()
 
     def border_pixel(self, i, j):
-
+        
         # only consider black pixels
         if(self.pixels[i, j] == 0): return False
 
@@ -96,7 +105,8 @@ class Chain:
         return False
 
     def border_neighbors(self, i, j):
-        index = (i, j)
+        index = [i, j]
+        # print(index)
         flag = False
 
         # check east
@@ -105,7 +115,8 @@ class Chain:
             self.chain_code.append(0)
             self.perimiter += 1
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check southeast
@@ -115,7 +126,8 @@ class Chain:
             self.chain_code.append(1)
             self.perimiter += math.sqrt(2)
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check south
@@ -124,7 +136,8 @@ class Chain:
             self.chain_code.append(2)
             self.perimiter += 1
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check southwest
@@ -134,7 +147,8 @@ class Chain:
             self.chain_code.append(3)
             self.perimiter += math.sqrt(2)
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check west
@@ -143,7 +157,8 @@ class Chain:
             self.chain_code.append(4)
             self.perimiter += 1
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check northwest
@@ -153,7 +168,8 @@ class Chain:
             self.chain_code.append(5)
             self.perimiter += math.sqrt(2)
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check north
@@ -162,7 +178,8 @@ class Chain:
             self.chain_code.append(6)
             self.perimiter += 1
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # check northeast
@@ -172,20 +189,21 @@ class Chain:
             self.chain_code.append(7)
             self.perimiter += 1
             flag = True
-            index = (i, j)
+            index.clear()
+            index = [i, j]
             return index
 
         # no neighbor border pixels
-        index = (i, j)
+        index.clear()
+        index = [i, j]
         return index
-
 
 
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     tree = Image.open(os.path.join(script_dir, 'Acer campestre 1.png'))
-    
+
     print(script_dir)
 
     c = Chain(tree)
@@ -195,6 +213,13 @@ def main():
 
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
+
+
+    print("Chain code:\n")
+    index = c.border_neighbors(c.begin[0], c.begin[1])
+    c.chain_code_generator(index[0], index[1])
+    print(c.chain_code)
+    # print(c.border)
 
     # import time
     # start = time.time()
