@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 import os.path
+import math
 
 class Chain:
     def __init__(self, tree):
@@ -94,21 +95,89 @@ class Chain:
         # no empty pixel around = not border pixel
         return False
 
-    # def border_neighbors(i, j):
-    #     index = (i, j)
-    #     flat = False
+    def border_neighbors(self, i, j):
+        index = (i, j)
+        flag = False
 
-    #     #check east
-    #     if(border_pixel())
+        # check east
+        if(self.border_pixel(i, j) and not flag and self.visited[i, j + 1] == 0):
+            j += 1
+            self.chain_code.append(0)
+            self.perimiter += 1
+            flag = True
+            index = (i, j)
+            return index
 
+        # check southeast
+        if(self.border_pixel(i + 1, j + 1) and not flag and self.visited[i + 1, j + 1] == 0):
+            i += 1
+            j += 1
+            self.chain_code.append(1)
+            self.perimiter += math.sqrt(2)
+            flag = True
+            index = (i, j)
+            return index
 
+        # check south
+        if(self.border_pixel(i + 1, j) and not flag and self.visited[i + 1, j] == 0):
+            i += 1
+            self.chain_code.append(2)
+            self.perimiter += 1
+            flag = True
+            index = (i, j)
+            return index
 
+        # check southwest
+        if(self.border_pixel(i, j) and not flag and self.visited[i, j + 1] == 0):
+            i += 1
+            j -= 1
+            self.chain_code.append(3)
+            self.perimiter += math.sqrt(2)
+            flag = True
+            index = (i, j)
+            return index
 
+        # check west
+        if(self.border_pixel(i, j - 1) and not flag and self.visited[i, j - 1] == 0):
+            j += 1
+            self.chain_code.append(4)
+            self.perimiter += 1
+            flag = True
+            index = (i, j)
+            return index
 
+        # check northwest
+        if(self.border_pixel(i - 1, j - 1) and not flag and self.visited[i - 1, j - 1] == 0):
+            i -= 1
+            j -= 1
+            self.chain_code.append(5)
+            self.perimiter += math.sqrt(2)
+            flag = True
+            index = (i, j)
+            return index
 
+        # check north
+        if(self.border_pixel(i - 1, j) and not flag and self.visited[i - 1, j] == 0):
+            i -= 1
+            self.chain_code.append(6)
+            self.perimiter += 1
+            flag = True
+            index = (i, j)
+            return index
 
+        # check northeast
+        if(self.border_pixel(i - 1, j + 1) and not flag and self.visited[i - 1, j + 1] == 0):
+            i -= 1
+            j += 1
+            self.chain_code.append(7)
+            self.perimiter += 1
+            flag = True
+            index = (i, j)
+            return index
 
-
+        # no neighbor border pixels
+        index = (i, j)
+        return index
 
 
 
