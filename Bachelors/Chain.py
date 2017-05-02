@@ -27,24 +27,25 @@ class Chain:
         for height in range(self.height):
             for width in range(self.width):
                 # print(self.pixels[width, height])
-                if self.pixels[width, height] == 1:
+                if self.pixels[width, height] == 0:
                     return [width, height]
 
     def last_black_pixel(self):
         for height in reversed(range(self.height)):
             for width in reversed(range(self.width)):
-                if self.pixels[width, height] == 1:
+                # print(self.pixels[width, height])
+                if self.pixels[width, height] == 0:
                     return [width, height]
 
     def roi_height(self):
-        return self.end[1] - self.begin[1]
+        return self.end[1] - self.begin[1] + 1
 
     def roi_width(self):
         # left most pixel
         left_most = 0
         for width in range(self.width):
             for height in range(self.height):
-                if self.pixels[width, height] == 1:
+                if self.pixels[width, height] == 0:
                     left_most = width
                     break
             if left_most != 0: # to leave second loop
@@ -53,12 +54,12 @@ class Chain:
         right_most = 0
         for width in reversed(range(self.width)):
             for height in reversed(range(self.height)):
-                if self.pixels[width, height] == 1:
+                if self.pixels[width, height] == 0:
                     right_most = width
                     break
             if right_most != 0: # to leave second loop
                 break
-        return right_most - left_most
+        return right_most - left_most + 1
     
     def border(self):
         for height in range(self.height):
@@ -68,12 +69,12 @@ class Chain:
 
 
     def border_pixel(self, i, j):
-        
+        # print("Checking pixel: {} {}".format(i, j))
         # only consider black pixels
         if(self.pixels[i, j] == 0): return False
 
         #check left
-        if(j == 0): return True
+        if(j ==0): return True
         if(j > 0):
             if (self.pixels[i, j - 1] == 0): return True
 
@@ -83,13 +84,13 @@ class Chain:
             if (self.pixels[i - 1, j] == 0): return True
         
         #check right
-        if(j == self.width): return True
-        if(j < self.width):
+        if(j == self.width - 1): return True
+        if(j < self.width - 1):
             if (self.pixels[i, j + 1] == 0): return True
         
         #check down
-        if(i == self.height): return True
-        if(i < self.height):
+        if(i == self.height - 1): return True
+        if(i < self.height - 1):
             if (self.pixels[i + 1, j] == 0): return True
         
         # no empty pixel around = not border pixel
@@ -191,6 +192,7 @@ class Chain:
 
     def chain_code_generator(self, i, j):
         index = self.border_neighbors(i, j)
+        print(index)
         # print(index)
         self.visited[i, j] = 1
 
@@ -203,15 +205,18 @@ class Chain:
 def main():
     acer = 'Acer campestre 1.png'
     shape = 'shape1.png'
+    paint = 'paint1.png'
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    tree = Image.open(os.path.join(script_dir, shape))
-    # gray = tree.convert("L")
-    # bw = np.asarray(gray).copy()
-    # bw[bw < 255] = 0
-    # bw[bw == 255] = 255
+    tree = Image.open(os.path.join(script_dir, paint))
     imfile = tree.convert("1", dither = Image.NONE)
     # imfile = Image.fromarray(bw)
     imfile.save("result_bw.png")
+    pix = imfile.load()
+    
+    for w in range(6):
+        for h in range(6):
+            print(pix[w,h] , end = "\t")
+        print()
 
     c = Chain(imfile)
     print("Size of image", tree.size)
@@ -221,7 +226,12 @@ def main():
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
 
-    # print(c.border_pixel(1000,1000))
+    # print(c.border_pixel(5,5))
+
+    for w in range(6):
+        for h in range(6):
+            print("{}".format(c.border_pixel(w,h)), end= "\t")
+        print()
 
     print("Chain code:\n")
     index = c.border_neighbors(c.begin[0], c.begin[1])
@@ -235,7 +245,7 @@ def main():
     # print("Points: ", c.points)
     # print("Time execution: ", (time.time() - start) * 1000)
 
-    tree.close()
+    # tree.close()
 
 if __name__ == "__main__":
     main()
