@@ -1,6 +1,6 @@
 from PIL import Image
-import numpy as np
 import os.path
+import numpy as np
 import math
 
 class Chain:
@@ -29,18 +29,17 @@ class Chain:
         self.visited = np.zeros([self.width, self.height])
 
         self.chain_code = []
+        self.border()
 
     def first_black_pixel(self):
         for height in range(self.height):
             for width in range(self.width):
-                # print(self.pixels[width, height])
                 if self.pixels[width, height] == 1:
                     return [width, height]
 
     def last_black_pixel(self):
         for height in reversed(range(self.height)):
             for width in reversed(range(self.width)):
-                # print(self.pixels[width, height])
                 if self.pixels[width, height] == 1:
                     return [width, height]
 
@@ -67,7 +66,7 @@ class Chain:
             if right_most != 0: # to leave second loop
                 break
         return right_most - left_most + 1
-    
+
     def border(self):
         for height in range(self.height):
             for width in range(self.width):
@@ -76,7 +75,6 @@ class Chain:
 
 
     def border_pixel(self, i, j):
-        print("Checking pixel: {} {}".format(i, j))
         # only consider black pixels
         if(self.pixels[i, j] == 0): return False
 
@@ -89,17 +87,17 @@ class Chain:
         if(i == 0): return True
         if(i > 0):
             if (self.pixels[i - 1, j] == 0): return True
-        
+
         #check right
         if(j == self.width - 1): return True
         if(j < self.width - 1):
             if (self.pixels[i, j + 1] == 0): return True
-        
+
         #check down
         if(i == self.height - 1): return True
         if(i < self.height - 1):
             if (self.pixels[i + 1, j] == 0): return True
-        
+
         # no empty pixel around = not border pixel
         return False
 
@@ -199,25 +197,32 @@ class Chain:
 
     def chain_code_generator(self, i, j):
         index = self.border_neighbors(i, j)
-        print(index)
         # print(index)
         self.visited[i, j] = 1
 
         if self.visited[index[0], index[1]] == 0:
             self.chain_code_generator(index[0], index[1])
         else:
+            pass
+
+    def print_pixels(self):
+        for w in range(self.width):
+            for h in range(self.height):
+                print(self.pixels[w,h], end = "")
             print()
 
+    def print_border_pixels(self):
+        for w in range(self.width):
+            for h in range(self.height):
+                print("{}".format(self.border_pixel(w,h)), end= "\t")
+            print()
 
 def main():
-    acer = 'Acer campestre 1.png'
-    shape = 'shape1.png'
     paint = 'paint1.png'
     script_dir = os.path.dirname(os.path.abspath(__file__))
     tree = Image.open(os.path.join(script_dir, paint))
     imfile = tree.convert("1", dither = Image.NONE)
     imfile.save("result_bw.png")
-    pix = imfile.load()
 
     c = Chain(imfile)
     print("Size of image", tree.size)
@@ -227,17 +232,13 @@ def main():
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
 
-    for w in range(6):
-        for h in range(6):
-            # print("{}".format(c.border_pixel(w,h)), end= "\t")
-            print(c.pixels[w,h], end = "")
-        print()
-
-    print("Chain code:\n")
     index = c.border_neighbors(c.begin[0], c.begin[1])
     c.chain_code_generator(index[0], index[1])
+    
+    print("Boder pixels: " + str(c.points))
+    print("Perimiter: " + str(c.perimiter))
+    print("Chain code:")
     print(c.chain_code)
-    # print(c.border)
 
     # import time
     # start = time.time()
@@ -245,7 +246,7 @@ def main():
     # print("Points: ", c.points)
     # print("Time execution: ", (time.time() - start) * 1000)
 
-    # tree.close()
+    tree.close()
 
 if __name__ == "__main__":
     main()
