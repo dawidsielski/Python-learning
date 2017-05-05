@@ -10,6 +10,7 @@ class Chain:
 
         self.pixels = tree.load()
 
+        # treshold
         for w in range(self.width):
             for h in range(self.height):
                 if self.pixels[w,h] >= 128:
@@ -30,6 +31,9 @@ class Chain:
 
         self.chain_code = []
         self.border()
+
+        __index = self.border_neighbors(self.begin[0], self.begin[1])
+        self.chain_code_generator(__index[0], __index[1])
 
     def first_black_pixel(self):
         for height in range(self.height):
@@ -217,6 +221,19 @@ class Chain:
                 print("{}".format(self.border_pixel(w,h)), end= "\t")
             print()
 
+    def print_information(self):
+        print("Size of image: width({width}, heigth({height}))".format(width = self.width, height = self.height) )
+        print("Position of first black pixel: ", self.begin)
+        print("Position of last black pixel: ", self.end)
+
+        print("Shape height: ", self.shape_height)
+        print("Shape width: ", self.shape_width)
+
+        print("Boder pixels: " + str(self.points))
+        print("Perimiter: " + str(self.perimiter))
+        print("Chain code:")
+        print(self.chain_code)
+    
 def main():
     paint = 'paint1.png'
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -225,21 +242,8 @@ def main():
     imfile.save("result_bw.png")
 
     c = Chain(imfile)
-    print("Size of image", tree.size)
-    print("Position of first black pixel: ", c.begin)
-    print("Position of last black pixel: ", c.end)
-
-    print("Shape height: ", c.shape_height)
-    print("Shape width: ", c.shape_width)
-
-    index = c.border_neighbors(c.begin[0], c.begin[1])
-    c.chain_code_generator(index[0], index[1])
+    c.print_information()
     
-    print("Boder pixels: " + str(c.points))
-    print("Perimiter: " + str(c.perimiter))
-    print("Chain code:")
-    print(c.chain_code)
-
     # import time
     # start = time.time()
     # c.border(tree)
