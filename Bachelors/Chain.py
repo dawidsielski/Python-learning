@@ -10,6 +10,13 @@ class Chain:
 
         self.pixels = tree.load()
 
+        for w in range(self.width):
+            for h in range(self.height):
+                if self.pixels[w,h] >= 128:
+                    self.pixels[w,h] = 0
+                else:
+                    self.pixels[w,h] = 1
+
         self.begin = self.first_black_pixel()
         self.end = self.last_black_pixel()
 
@@ -27,14 +34,14 @@ class Chain:
         for height in range(self.height):
             for width in range(self.width):
                 # print(self.pixels[width, height])
-                if self.pixels[width, height] == 0:
+                if self.pixels[width, height] == 1:
                     return [width, height]
 
     def last_black_pixel(self):
         for height in reversed(range(self.height)):
             for width in reversed(range(self.width)):
                 # print(self.pixels[width, height])
-                if self.pixels[width, height] == 0:
+                if self.pixels[width, height] == 1:
                     return [width, height]
 
     def roi_height(self):
@@ -45,7 +52,7 @@ class Chain:
         left_most = 0
         for width in range(self.width):
             for height in range(self.height):
-                if self.pixels[width, height] == 0:
+                if self.pixels[width, height] == 1:
                     left_most = width
                     break
             if left_most != 0: # to leave second loop
@@ -54,7 +61,7 @@ class Chain:
         right_most = 0
         for width in reversed(range(self.width)):
             for height in reversed(range(self.height)):
-                if self.pixels[width, height] == 0:
+                if self.pixels[width, height] == 1:
                     right_most = width
                     break
             if right_most != 0: # to leave second loop
@@ -69,7 +76,7 @@ class Chain:
 
 
     def border_pixel(self, i, j):
-        # print("Checking pixel: {} {}".format(i, j))
+        print("Checking pixel: {} {}".format(i, j))
         # only consider black pixels
         if(self.pixels[i, j] == 0): return False
 
@@ -209,14 +216,8 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     tree = Image.open(os.path.join(script_dir, paint))
     imfile = tree.convert("1", dither = Image.NONE)
-    # imfile = Image.fromarray(bw)
     imfile.save("result_bw.png")
     pix = imfile.load()
-    
-    for w in range(6):
-        for h in range(6):
-            print(pix[w,h] , end = "\t")
-        print()
 
     c = Chain(imfile)
     print("Size of image", tree.size)
@@ -226,11 +227,10 @@ def main():
     print("Shape height: ", c.shape_height)
     print("Shape width: ", c.shape_width)
 
-    # print(c.border_pixel(5,5))
-
     for w in range(6):
         for h in range(6):
-            print("{}".format(c.border_pixel(w,h)), end= "\t")
+            # print("{}".format(c.border_pixel(w,h)), end= "\t")
+            print(c.pixels[w,h], end = "")
         print()
 
     print("Chain code:\n")
