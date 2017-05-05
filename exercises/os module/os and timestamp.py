@@ -24,6 +24,9 @@ for element in directory_files_names:
 
 
 date1 = datetime.datetime(*(list(map(int, time_stamp[0]))))
-# date2 = datetime.datetime((time_stamp[-1]))
+date2 = datetime.datetime(*(list(map(int, time_stamp[-1]))))
 
 print(date1)
+print(date2)
+c = date2 - date1
+print(c)
