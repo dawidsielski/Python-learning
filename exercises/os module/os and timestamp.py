@@ -14,6 +14,16 @@ for element in directory_files_names:
         without_underscore = (filename[0].split("_"))
         without_comma = (without_underscore[-1].split(","))
         x = without_underscore[:-1]
-        x.extend(without_comma)
+        # print(without_comma)
+        date = [without_comma[0][:2], without_comma[0][2:4], without_comma[0][4:6]]
+        # print(date)
+        x.extend(date)
+        x.extend([without_comma[-1]])
         print(x)
-        time_stamp.append(0)
+        time_stamp.append(x)
+
+
+date1 = datetime.datetime(*(list(map(int, time_stamp[0]))))
+# date2 = datetime.datetime((time_stamp[-1]))
+
+print(date1)
