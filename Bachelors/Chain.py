@@ -2,6 +2,7 @@ from PIL import Image
 import os.path
 import numpy as np
 import math
+import sys
 
 class Chain:
     def __init__(self, tree):
@@ -236,21 +237,36 @@ class Chain:
     
 def main():
     paint = 'paint1.png'
+    acer = 'Acer campestre 1.png'
+    im = 'image001.png'
+    s1 = 'shape1.png'
+    s2 = 'shape2.png'
+    s3 = 'shape3.png'
+
+
+    arguments = sys.argv[1:]
+    print(arguments)
+    if arguments:
+        filename = arguments[0]
+    else:
+        filename = s1
+
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    tree = Image.open(os.path.join(script_dir, paint))
+    tree = Image.open(os.path.join(script_dir, filename))
     imfile = tree.convert("1", dither = Image.NONE)
-    imfile.save("result_bw.png")
+    # imfile.save("result_bw.png")
 
     c = Chain(imfile)
     c.print_information()
-    
+    tree.close()
+
     # import time
     # start = time.time()
     # c.border(tree)
     # print("Points: ", c.points)
     # print("Time execution: ", (time.time() - start) * 1000)
 
-    tree.close()
 
 if __name__ == "__main__":
     main()
