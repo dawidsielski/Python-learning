@@ -23,7 +23,8 @@ for element in trees_content:
     tree = Image.open(path)
     imfile = tree.convert("1", dither = Image.NONE)
     c = Chain(imfile)
-    information = {'Code' : c.chain_code}
+    information = {'Code' : c.chain_code, "Border pixel" : c.points, "Perimeter" : c.perimeter, \
+                    "Shape height" : c.shape_height, "Shape width" : c.shape_width, "First black" : c.begin, "Last black" : c.end}
     trees_chain_code[element] = information
     print(c.chain_code)
 
