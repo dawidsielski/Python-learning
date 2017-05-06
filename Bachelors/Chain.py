@@ -204,6 +204,7 @@ class Chain:
         print(self.chain_code)
     
 def main():
+    sys.setrecursionlimit(5000)
     paint = 'paint1.png'
     acer = 'Acer campestre 1.png'
     im = 'image001.png'
@@ -218,7 +219,7 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = s1
+        filename = acer
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -226,15 +227,16 @@ def main():
     imfile = tree.convert("1", dither = Image.NONE)
     # imfile.save("result_bw.png")
 
+    import time
+    start = time.time()
+
     c = Chain(imfile)
     c.print_information()
+    print(len(c.chain_code))
     tree.close()
-
-    # import time
-    # start = time.time()
-    # c.border(tree)
-    # print("Points: ", c.points)
-    # print("Time execution: ", (time.time() - start) * 1000)
+    print("Points: ", c.points)
+    
+    print("Time execution: {} miliseconds".format((time.time() - start) * 1000))
 
 
 if __name__ == "__main__":
