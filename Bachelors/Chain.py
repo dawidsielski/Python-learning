@@ -26,7 +26,7 @@ class Chain:
         self.shape_width = self.roi_width()
 
         self.points = 0
-        self.perimiter = 0
+        self.perimeter = 0
 
         self.visited = np.zeros([self.width, self.height])
 
@@ -107,98 +107,66 @@ class Chain:
         return False
 
     def border_neighbors(self, i, j):
-        index = [i, j]
-        # print(index)
         flag = False
 
         # check east
         if(self.border_pixel(i, j + 1) and not flag and self.visited[i, j + 1] == 0):
-            j += 1
             self.chain_code.append(0)
-            self.perimiter += 1
+            self.perimeter += 1
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i, j + 1]
 
         # check southeast
         if(self.border_pixel(i + 1, j + 1) and not flag and self.visited[i + 1, j + 1] == 0):
-            i += 1
-            j += 1
             self.chain_code.append(1)
-            self.perimiter += math.sqrt(2)
+            self.perimeter += math.sqrt(2)
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i + 1, j + 1]
 
         # check south
         if(self.border_pixel(i + 1, j) and not flag and self.visited[i + 1, j] == 0):
-            i += 1
             self.chain_code.append(2)
-            self.perimiter += 1
+            self.perimeter += 1
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i + 1, j]
 
         # check southwest
         if(self.border_pixel(i + 1, j - 1) and not flag and self.visited[i + 1, j - 1] == 0):
-            i += 1
-            j -= 1
             self.chain_code.append(3)
-            self.perimiter += math.sqrt(2)
+            self.perimeter += math.sqrt(2)
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i + 1, j - 1]
 
         # check west
         if(self.border_pixel(i, j - 1) and not flag and self.visited[i, j - 1] == 0):
-            j -= 1
             self.chain_code.append(4)
-            self.perimiter += 1
+            self.perimeter += 1
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i , j - 1]
 
         # check northwest
         if(self.border_pixel(i - 1, j - 1) and not flag and self.visited[i - 1, j - 1] == 0):
-            i -= 1
-            j -= 1
             self.chain_code.append(5)
-            self.perimiter += math.sqrt(2)
+            self.perimeter += math.sqrt(2)
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i - 1, j - 1]
 
         # check north
         if(self.border_pixel(i - 1, j) and not flag and self.visited[i - 1, j] == 0):
-            i -= 1
             self.chain_code.append(6)
-            self.perimiter += 1
+            self.perimeter += 1
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i - 1, j]
 
         # check northeast
         if(self.border_pixel(i - 1, j + 1) and not flag and self.visited[i - 1, j + 1] == 0):
-            i -= 1
-            j += 1
             self.chain_code.append(7)
-            self.perimiter += 1
+            self.perimeter += 1
             flag = True
-            index.clear()
-            index = [i, j]
-            return index
+            return [i - 1, j + 1]
 
         # no neighbor border pixels
-        index.clear()
-        index = [i, j]
-        return index
+        return [i, j]
 
     def chain_code_generator(self, i, j):
         index = self.border_neighbors(i, j)
@@ -230,8 +198,8 @@ class Chain:
         print("Shape height: ", self.shape_height)
         print("Shape width: ", self.shape_width)
 
-        print("Boder pixels: " + str(self.points))
-        print("Perimiter: " + str(self.perimiter))
+        print("Border pixels: " + str(self.points))
+        print("perimeter: " + str(self.perimeter))
         print("Chain code:")
         print(self.chain_code)
     
@@ -245,10 +213,11 @@ def main():
 
 
     arguments = sys.argv[1:]
-    print(arguments)
     if arguments:
         filename = arguments[0]
+        print(arguments)
     else:
+        print("No arguments given.")
         filename = s1
 
 
