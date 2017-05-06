@@ -203,6 +203,9 @@ class Chain:
         print("Chain code:")
         print(self.chain_code)
     
+    def prepare_photo(self):
+        pass
+
 def main():
     sys.setrecursionlimit(5000)
     paint = 'paint1.png'
@@ -227,6 +230,7 @@ def main():
     imfile = tree.convert("1", dither = Image.NONE)
     # imfile.save("result_bw.png")
 
+    # write decorator for time
     import time
     start = time.time()
 
