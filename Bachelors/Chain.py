@@ -6,8 +6,7 @@ import sys
 
 class Chain:
     def __init__(self, tree):
-        self.height = tree.size[1]
-        self.width = tree.size[0]
+        self.width, self.height = tree.size
 
         self.pixels = tree.load()
 
@@ -34,7 +33,7 @@ class Chain:
         self.border()
 
         __index = self.border_neighbors(self.begin[0], self.begin[1])
-        self.chain_code_generator(__index[0], __index[1])
+        self.chain_code_generator(*__index)
 
     def first_black_pixel(self):
         for height in range(self.height):
@@ -110,56 +109,56 @@ class Chain:
         flag = False
 
         # check east
-        if(self.border_pixel(i, j + 1) and not flag and self.visited[i, j + 1] == 0):
+        if (self.border_pixel(i, j + 1)) and (not flag) and (self.visited[i, j + 1] == 0):
             self.chain_code.append(0)
             self.perimeter += 1
             flag = True
             return [i, j + 1]
 
         # check southeast
-        if(self.border_pixel(i + 1, j + 1) and not flag and self.visited[i + 1, j + 1] == 0):
+        if (self.border_pixel(i + 1, j + 1)) and (not flag) and (self.visited[i + 1, j + 1] == 0):
             self.chain_code.append(1)
             self.perimeter += math.sqrt(2)
             flag = True
             return [i + 1, j + 1]
 
         # check south
-        if(self.border_pixel(i + 1, j) and not flag and self.visited[i + 1, j] == 0):
+        if (self.border_pixel(i + 1, j)) and (not flag) and (self.visited[i + 1, j] == 0):
             self.chain_code.append(2)
             self.perimeter += 1
             flag = True
             return [i + 1, j]
 
         # check southwest
-        if(self.border_pixel(i + 1, j - 1) and not flag and self.visited[i + 1, j - 1] == 0):
+        if (self.border_pixel(i + 1, j - 1)) and (not flag) and (self.visited[i + 1, j - 1] == 0):
             self.chain_code.append(3)
             self.perimeter += math.sqrt(2)
             flag = True
             return [i + 1, j - 1]
 
         # check west
-        if(self.border_pixel(i, j - 1) and not flag and self.visited[i, j - 1] == 0):
+        if (self.border_pixel(i, j - 1)) and (not flag) and (self.visited[i, j - 1] == 0):
             self.chain_code.append(4)
             self.perimeter += 1
             flag = True
             return [i , j - 1]
 
         # check northwest
-        if(self.border_pixel(i - 1, j - 1) and not flag and self.visited[i - 1, j - 1] == 0):
+        if (self.border_pixel(i - 1, j - 1)) and (not flag) and (self.visited[i - 1, j - 1] == 0):
             self.chain_code.append(5)
             self.perimeter += math.sqrt(2)
             flag = True
             return [i - 1, j - 1]
 
         # check north
-        if(self.border_pixel(i - 1, j) and not flag and self.visited[i - 1, j] == 0):
+        if (self.border_pixel(i - 1, j)) and (not flag) and (self.visited[i - 1, j] == 0):
             self.chain_code.append(6)
             self.perimeter += 1
             flag = True
             return [i - 1, j]
 
         # check northeast
-        if(self.border_pixel(i - 1, j + 1) and not flag and self.visited[i - 1, j + 1] == 0):
+        if (self.border_pixel(i - 1, j + 1)) and (not flag) and (self.visited[i - 1, j + 1] == 0):
             self.chain_code.append(7)
             self.perimeter += 1
             flag = True
@@ -199,7 +198,7 @@ class Chain:
         print("Shape width: ", self.shape_width)
 
         print("Border pixels: " + str(self.points))
-        print("perimeter: " + str(self.perimeter))
+        print("Perimeter: " + str(self.perimeter))
         print("Chain code:")
         print(self.chain_code)
     
