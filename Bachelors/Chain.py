@@ -8,6 +8,7 @@ class Chain:
     def __init__(self, tree):
         self.width, self.height = tree.size
 
+        # self.pixels = np.array(tree.load()) #needs to be checked
         self.pixels = tree.load()
 
         # treshold
