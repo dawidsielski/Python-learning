@@ -51,26 +51,22 @@ class Chain:
     def roi_height(self):
         return self.end[1] - self.begin[1] + 1
 
-    def roi_width(self):
+    def _roi_left(self):
         # left most pixel
-        left_most = 0
         for width in range(self.width):
             for height in range(self.height):
                 if self.pixels[width, height] == 1:
-                    left_most = width
-                    break
-            if left_most != 0: # to leave second loop
-                break
+                    return width
+
+    def _roi_right(self):
         # right most pixel
-        right_most = 0
         for width in reversed(range(self.width)):
             for height in reversed(range(self.height)):
                 if self.pixels[width, height] == 1:
-                    right_most = width
-                    break
-            if right_most != 0: # to leave second loop
-                break
-        return right_most - left_most + 1
+                    return width
+
+    def roi_width(self):
+        return self._roi_right() - self._roi_left() + 1
 
     def border(self):
         for height in range(self.height):
@@ -84,7 +80,7 @@ class Chain:
         if(self.pixels[i, j] == 0): return False
 
         #check left
-        if(j ==0): return True
+        if(j == 0): return True
         if(j > 0):
             if (self.pixels[i, j - 1] == 0): return True
 
@@ -202,6 +198,7 @@ class Chain:
         print("Perimeter: " + str(self.perimeter))
         print("Chain code:")
         print(self.chain_code)
+
     
     def prepare_photo(self):
         pass
@@ -222,7 +219,7 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = acer
+        filename = paint
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -241,6 +238,9 @@ def main():
     print("Points: ", c.points)
     
     print("Time execution: {} miliseconds".format((time.time() - start) * 1000))
+
+    # c.print_pixels()
+    # c.print_border_pixels()
 
 
 if __name__ == "__main__":
