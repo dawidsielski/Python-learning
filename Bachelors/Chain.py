@@ -226,7 +226,7 @@ def main():
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    tree = Image.open(os.path.join(script_dir, filename))
+    tree = Image.open(os.path.join(script_dir,"test_images", filename))
     imfile = tree.convert("1", dither = Image.NONE)
     # imfile.save("result_bw.png")
 
