@@ -8,6 +8,7 @@ current_month = datetime.date.today().month
 current_day = datetime.date.today().day
 
 script_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(script_path)
 
 if not os.path.isdir(str(current_year)):
     os.mkdir(str(current_year))
