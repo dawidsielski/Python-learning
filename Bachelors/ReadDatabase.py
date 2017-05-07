@@ -12,5 +12,6 @@ for element in trees_chain_code:
 
 print(count_wrong)
 
-print(trees_chain_code['Robinia pseudacacia 1.png']['Code'])
+# print(trees_chain_code['Robinia pseudacacia 1.png']['Code'])
+print(trees_chain_code['Vitis vinifera 2.png']['Code'])
 trees_chain_code.close()
