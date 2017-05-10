@@ -211,6 +211,7 @@ def main():
     s1 = 'shape1.png'
     s2 = 'shape2.png'
     s3 = 'shape3.png'
+    magnolia = 'Magnolia soulangeana 7.png'
 
 
     arguments = sys.argv[1:]
@@ -219,13 +220,13 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = paint
+        filename = magnolia
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     tree = Image.open(os.path.join(script_dir,"test_images", filename))
     imfile = tree.convert("1", dither = Image.NONE)
-    # imfile.save("result_bw.png")
+    imfile.save("result_bw.png")
 
     # write decorator for time
     import time
