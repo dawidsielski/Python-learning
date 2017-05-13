@@ -12,7 +12,6 @@ def solution(X):
                 result[x - 1] = 1
             else:
                 result[x - 1] = 0
-        print(result)
     return result
 
-print('Solution: ' + str(solution(3)))
+print('Solution: ' + str(solution(4)))
