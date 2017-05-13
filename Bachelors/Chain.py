@@ -220,7 +220,7 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = magnolia
+        filename = acer
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
