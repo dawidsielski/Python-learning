@@ -5,12 +5,14 @@ import math
 import sys
 
 class Chain:
-    def __init__(self, tree):
+    def __init__(self, path):
+        imfile = Image.open(path)
+        tree = imfile.convert("1", dither = Image.NONE)
+
         self.width, self.height = tree.size
 
-        # self.pixels = np.array(tree.load()) #needs to be checked
         self.pixels = tree.load()
-
+        tree.close()
         # treshold
         for w in range(self.width):
             for h in range(self.height):
@@ -222,26 +224,15 @@ def main():
         print("No arguments given.")
         filename = s1
 
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    tree = Image.open(os.path.join(script_dir,"test_images", filename))
-    imfile = tree.convert("1", dither = Image.NONE)
-    imfile.save("result_bw.png")
+    absolute_path_trees = os.path.join(script_dir, "trees")
+    trees_content = os.listdir(absolute_path_trees)
+    # imfile.save("result_bw.png")
 
-    # write decorator for time
-    import time
-    start = time.time()
-
-    c = Chain(imfile)
-    c.print_information()
-    print(len(c.chain_code))
-    tree.close()
-    print("Points: ", c.points)
-    
-    print("Time execution: {} miliseconds".format((time.time() - start) * 1000))
-
-    # c.print_pixels()
-    # c.print_border_pixels()
+    for filename in trees_content[:3]:
+        c = Chain(os.path.join(absolute_path_trees, filename))
+        # c.print_information()
+        print(filename)
 
 
 if __name__ == "__main__":
