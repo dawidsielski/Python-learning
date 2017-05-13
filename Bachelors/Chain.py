@@ -196,7 +196,7 @@ class Chain:
 
         print("Border pixels: " + str(self.points))
         print("Perimeter: " + str(self.perimeter))
-        print("Chain code:")
+        print("Chain code (size: {}) :".format(len(self.chain_code)))
         print(self.chain_code)
 
     
@@ -220,7 +220,7 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = acer
+        filename = s1
 
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
