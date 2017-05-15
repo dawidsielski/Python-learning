@@ -14,4 +14,10 @@ def solution(X):
                 result[x - 1] = 0
     return result
 
-print('Solution: ' + str(solution(4)))
+print('Solution: ' + str(solution(30)))
+
+
+x = lambda x: True if x == 1 else False
+
+print(x(1))
+print(x(0))
