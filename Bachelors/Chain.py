@@ -226,12 +226,14 @@ def main():
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     absolute_path_trees = os.path.join(script_dir, "trees")
+    absolute_path_trees = os.path.join(script_dir, "Testing database")
     trees_content = os.listdir(absolute_path_trees)
+    print(trees_content)
     # imfile.save("result_bw.png")
 
-    for filename in trees_content[:3]:
+    for filename in trees_content[2:4]:
         c = Chain(os.path.join(absolute_path_trees, filename))
-        # c.print_information()
+        c.print_information()
         print(filename)
 
 
