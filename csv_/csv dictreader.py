@@ -8,7 +8,9 @@ airtravel_file = open(os.path.join(script_path, "airtravel.csv"))
 
 rows = csv.DictReader(airtravel_file)
 for row in rows:
-    print(row)
+    # print(row)
+    for year in range(1958, 1961):
+        if row['Month'] == "DEC":
+            print(row)
 
-print(dir(rows))
 airtravel_file.close()
