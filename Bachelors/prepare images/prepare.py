@@ -12,6 +12,9 @@ for root, dirname, filenames in os.walk(trees2_absolute_path):
     print(root)
     print("Dirname: ", dirname)
     for name in filenames:
-        # print(name)
+        if ".db" in name:
+            continue
+        print(name)
         image_path = os.path.join(root, name)
         img = Image.open(image_path)
+        # inverted_image = PIL.ImageOps.invert(img)
