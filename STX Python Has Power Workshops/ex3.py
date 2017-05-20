@@ -14,3 +14,7 @@ def print_obj(obj):
 # print_obj(Person)
 print(dir(Person))
 print(Person.__dict__)
+
+
+variables = [i for i in dir(Person) if not callable(i)]
+print("Variables", variables)
