@@ -1,11 +1,11 @@
 import unittest
 
 def if_letter_in_string(s, l = None):
-    if l is None:
-        return False
-    if l in s:
-        return True
-    return False
+    if l == None: return False
+    for letter in l:
+        if letter not in s:
+            return False
+    return True
 
 
 class TestWord(unittest.TestCase):
