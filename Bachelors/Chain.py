@@ -7,7 +7,7 @@ import sys
 class Chain:
     def __init__(self, path):
         imfile = Image.open(path)
-        tree = imfile.convert("1", dither = Image.NONE)
+        tree = imfile.convert("1", dither=Image.NONE)
 
         self.width, self.height = tree.size
 
@@ -16,10 +16,10 @@ class Chain:
         # treshold
         for w in range(self.width):
             for h in range(self.height):
-                if self.pixels[w,h] >= 128:
-                    self.pixels[w,h] = 0
+                if self.pixels[w, h] >= 128:
+                    self.pixels[w, h] = 0
                 else:
-                    self.pixels[w,h] = 1
+                    self.pixels[w, h] = 1
 
         self.begin = self.first_black_pixel()
         self.end = self.last_black_pixel()
@@ -82,24 +82,32 @@ class Chain:
         if(self.pixels[i, j] == 0): return False
 
         #check left
-        if(j == 0): return True
-        if(j > 0):
-            if (self.pixels[i, j - 1] == 0): return True
+        if j == 0:
+            return True
+        if j > 0:
+            if self.pixels[i, j - 1] == 0:
+                return True
 
         #check up
-        if(i == 0): return True
-        if(i > 0):
-            if (self.pixels[i - 1, j] == 0): return True
+        if i == 0:
+            return True
+        if i > 0:
+            if self.pixels[i - 1, j] == 0:
+                return True
 
         #check right
-        if(j == self.width - 1): return True
-        if(j < self.width - 1):
-            if (self.pixels[i, j + 1] == 0): return True
+        if j == self.width - 1:
+            return True
+        if j < self.width - 1:
+            if self.pixels[i, j + 1] == 0:
+                return True
 
         #check down
-        if(i == self.height - 1): return True
-        if(i < self.height - 1):
-            if (self.pixels[i + 1, j] == 0): return True
+        if i == self.height - 1:
+            return True
+        if i < self.height - 1:
+            if self.pixels[i + 1, j] == 0:
+                return True
 
         # no empty pixel around = not border pixel
         return False
@@ -140,7 +148,7 @@ class Chain:
             self.chain_code.append(4)
             self.perimeter += 1
             flag = True
-            return [i , j - 1]
+            return [i, j - 1]
 
         # check northwest
         if (self.border_pixel(i - 1, j - 1)) and (not flag) and (self.visited[i - 1, j - 1] == 0):
@@ -179,17 +187,17 @@ class Chain:
     def print_pixels(self):
         for w in range(self.width):
             for h in range(self.height):
-                print(self.pixels[w,h], end = "")
+                print(self.pixels[w, h], end="")
             print()
 
     def print_border_pixels(self):
         for w in range(self.width):
             for h in range(self.height):
-                print("{}".format(self.border_pixel(w,h)), end= "\t")
+                print("{}".format(self.border_pixel(w, h)), end="\t")
             print()
 
     def print_information(self):
-        print("Size of image: width({width}, heigth({height}))".format(width = self.width, height = self.height) )
+        print("Size of image: width({width}, heigth({height}))".format(width=self.width, height=self.height))
         print("Position of first black pixel: ", self.begin)
         print("Position of last black pixel: ", self.end)
 
@@ -201,19 +209,18 @@ class Chain:
         print("Chain code (size: {}) :".format(len(self.chain_code)))
         print(self.chain_code)
 
-    
     def prepare_photo(self):
         pass
 
 def main():
     sys.setrecursionlimit(5000)
-    paint = 'paint1.png'
-    acer = 'Acer campestre 1.png'
-    im = 'image001.png'
-    s1 = 'shape1.png'
-    s2 = 'shape2.png'
-    s3 = 'shape3.png'
-    magnolia = 'Magnolia soulangeana 7.png'
+    PAINT = 'paint1.png'
+    ACER = 'Acer campestre 1.png'
+    IM = 'image001.png'
+    S1 = 'shape1.png'
+    S2 = 'shape2.png'
+    S3 = 'shape3.png'
+    MAGNOLIA = 'Magnolia soulangeana 7.png'
 
 
     arguments = sys.argv[1:]
@@ -222,7 +229,7 @@ def main():
         print(arguments)
     else:
         print("No arguments given.")
-        filename = s1
+        filename = S1
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     absolute_path_trees = os.path.join(script_dir, "trees")
