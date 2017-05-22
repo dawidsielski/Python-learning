@@ -46,19 +46,17 @@ dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]) => ["WEST
 dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH"]) => []
 """
 
-
-a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
-
 def dirReduc(arr):
     working_array = arr
     d = {"NORTH":"SOUTH", "SOUTH":"NORTH", "WEST":"EAST", "EAST":"WEST"}
-    for element in range(len(working_array)):
-        for element2 in working_array[element:]:
-            print("{} {}".format(d[working_array[element]], element2))
-            if d[working_array[element]] == element2:
-                working_array.remove(working_array[element])
-                working_array.remove(element2)
-    print(working_array)
+    element = 0
+    while element < len(working_array) - 1:
+        if d[working_array[element]] == working_array[element + 1]:
+            working_array.remove(working_array[element + 1])
+            working_array.remove(working_array[element])
+            element = 0
+        else:
+            element += 1
     return working_array
 
 
@@ -66,3 +64,4 @@ a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
 print(dirReduc(a) == ['WEST'])
 u=["NORTH", "WEST", "SOUTH", "EAST"]
 print(dirReduc(u) == ["NORTH", "WEST", "SOUTH", "EAST"])
+print(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH"]) == [])
