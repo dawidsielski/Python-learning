@@ -29,28 +29,8 @@ For n = 4, the output shoule be 5.
 """
 
 def look_and_say_and_sum(n):
-    starting_number = [1]
-    result = [1]
-    d = {}
+    pass
 
-    for element in range(n - 1):
-        for digit in starting_number:
-            if digit in d.keys():
-                d[digit] += 1
-            else:
-                d[digit] = 1
-        # print(d)
-        result.clear()
-        for key, value in d.items():
-            result.append(value)
-            result.append(key)
-        starting_number = result
-        d.clear()
-    print(starting_number)
-    return sum(result)
-            
-        
-        
 
 
 print(look_and_say_and_sum(1) == 1)

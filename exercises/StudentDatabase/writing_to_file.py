@@ -13,6 +13,7 @@ with open(os.path.join(script_path, filename), "a") as f:
     f.writelines("wpisz do pliku\n")
 
 
+# jak dasz r to bedzie tylko do odczytu
 with open(os.path.join(script_path, filename), "r") as f:
     for line in f:
         print(line)
