@@ -6,10 +6,12 @@ You argue that it is much lower than this and so to settle the debate, you have 
 Your task is to make an algorithm that returns true if 'like' accounts for more than 5% of words in the array, otherwise false (if no words are spoken, return false also).
 """
 
-
 def eval_likes(words):
-    # insert your code here
-    pass
+    count_like = 0
+    for word in words:
+        if word is "like":
+            count_like += 1
+    return True if count_like/len(words) >= 0.05 else False
 
 
 

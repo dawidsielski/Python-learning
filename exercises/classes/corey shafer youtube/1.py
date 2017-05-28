@@ -8,10 +8,14 @@ class Employee:
 
     def get_fullname(self):
         return self.name + " " + self.surename
+    
+    def __str__(self):
+        return self.name + " " + self.surename
         
 
 
 e1 = Employee('Dawid', "Sielski")
+e2 = Employee('John', "Brown")
 
 print(e1)
 print(e1.name)

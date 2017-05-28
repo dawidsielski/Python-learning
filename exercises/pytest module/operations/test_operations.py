@@ -12,7 +12,7 @@ def test_subtraction():
 @pytest.mark.parametrize("test_input, expected_output",
                          [   
                             (2, 4),
-                            (3, 10)
+                            (3, 1)
                          ]
                         )
 def test_power(test_input, expected_output):

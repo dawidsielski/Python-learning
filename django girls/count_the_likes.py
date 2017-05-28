@@ -8,11 +8,8 @@ Your task is to make an algorithm that returns true if 'like' accounts for more 
 
 
 def eval_likes(words):
-    count_like = 0
-    for word in words:
-        if word is "like":
-            count_like += 1
-    return True if count_like/len(words) >= 0.05 else False
+    # place your code here
+    pass
 
 
 
