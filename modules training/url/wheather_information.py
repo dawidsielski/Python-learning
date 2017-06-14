@@ -8,4 +8,6 @@ wheather_api_url = 'http://api.openweathermap.org/data/2.5/weather?q={city}&unit
 with urllib.request.urlopen(wheather_api_url) as wheather_json_file:
     wheather_information = json.loads(wheather_json_file.read().decode())
 
-pprint.pprint(wheather_information)
+# pprint.pprint(wheather_information)
+
+print("Temperature in {city} is {temp}".format(temp = wheather_information['main']['temp'], city = city))
