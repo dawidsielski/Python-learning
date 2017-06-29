@@ -1,4 +1,6 @@
 import requests
+import json
+
 
 url = 'https://jsonplaceholder.typicode.com/posts'
 
@@ -9,4 +11,7 @@ except Exception as error :
 
 
 print(req.status_code)
-print(req.text)
+# print(req.text)
+
+posts_data = json.loads(req.text)
+print(posts_data[0])
