@@ -18,7 +18,7 @@ def multiply(a_value, b_value):
 
 def main():
     """Function prepared for testing purposes"""
-    for a_value, b_value in enumerate(range(10)):
+    for a_value, b_value in enumerate(range(100000)):
         add(a_value, b_value)
         multiply(a_value, b_value)
 
