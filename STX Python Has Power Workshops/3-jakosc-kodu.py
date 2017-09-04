@@ -39,7 +39,7 @@ class MathTest(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# python python/tests/test.py
+# python python/test/test.py
 
 # Asercje w testach
 

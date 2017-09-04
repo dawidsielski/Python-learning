@@ -18,5 +18,5 @@ def test_power():
 
 
 # -k [name] do select specified test (name can be a part of function name)
-# -m [category name] for selecting category for the tests
+# -m [category name] for selecting category for the test
 # can write [not [category name]] to run every test but specified in command line

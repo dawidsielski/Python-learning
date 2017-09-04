@@ -223,22 +223,14 @@ def main():
     MAGNOLIA = 'Magnolia soulangeana 7.png'
 
 
-    arguments = sys.argv[1:]
-    if arguments:
-        filename = arguments[0]
-        print(arguments)
-    else:
-        print("No arguments given.")
-        filename = S1
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
     absolute_path_trees = os.path.join(script_dir, "trees")
-    absolute_path_trees = os.path.join(script_dir, "Testing database")
+    absolute_path_trees = os.path.join(script_dir, "test_images")
     trees_content = os.listdir(absolute_path_trees)
     print(trees_content)
     # imfile.save("result_bw.png")
 
-    for filename in trees_content[2:4]:
+    for filename in trees_content[4:5]:
         c = Chain(os.path.join(absolute_path_trees, filename))
         c.print_information()
         print(filename)

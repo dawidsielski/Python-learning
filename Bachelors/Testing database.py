@@ -1,4 +1,4 @@
-from Chain import *
+from chain import *
 import os
 
 file_path = os.path.dirname(os.path.abspath(__file__))

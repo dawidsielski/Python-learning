@@ -32,3 +32,5 @@ except ValueError as error:
 
 
 print([member for name, member in Color.__members__.items()])
+
+

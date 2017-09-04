@@ -8,7 +8,7 @@ def get_response(url):
 if __name__ == "__main__":
     resp = requests.Response()
     try:
-        resp = get_response('https://jsonplaceholder.typicode.com/posts/asd')
+        resp = get_response('https://jsonplaceholder.typicode.com/posts/')
     except requests.ConnectionError as connection_error:
         print(connection_error)
     print(resp.text)
