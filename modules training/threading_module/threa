@@ -1,13 +1,25 @@
 import threading
+from time import sleep
 
 
 def print_something():
-    print("Something")
+    i = 0
+    while i < 10:
+        print(str(i) + " Something")
+        sleep(1)
+        i += 1
 
 
-our_thread = threading.Thread(target=print_something)
-our_thread.start()
+def main():
+    our_thread = threading.Thread(target=print_something, name="Print something")
 
-print(threading.active_count())
-print(threading.enumerate())
-print(threading.current_thread())
+    print(threading.active_count())
+    print(threading.enumerate())
+    print(threading.current_thread())
+
+    our_thread.start()
+
+    print(our_thread.ident)
+
+if __name__ == '__main__':
+    main()
