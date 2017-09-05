@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7cf02d0a-2e40-4cfc-8283-4a4a4d5964d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules training/threading_module/threa" afterPath="$PROJECT_DIR$/modules training/threading_module/threa" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules training/python_image_library/img.py" afterPath="$PROJECT_DIR$/modules training/python_image_library/img.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,46 +14,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="json_placeholder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules training/requests/json_placeholder.py">
+      <file leaf-file-name="img.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules training/python_image_library/img.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="threa" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules training/threading_module/threa">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="enum_learning.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules training/enum module/enum_learning.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="enum_flag.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules training/enum module/enum_flag.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -96,10 +62,11 @@
         <option value="$PROJECT_DIR$/modules training/enum module/enum_learning.py" />
         <option value="$PROJECT_DIR$/modules training/enum module/enum_flag.py" />
         <option value="$PROJECT_DIR$/modules training/threading_module/threa" />
+        <option value="$PROJECT_DIR$/modules training/python_image_library/img.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="1920" />
     <option name="height" value="1040" />
   </component>
@@ -134,7 +101,7 @@
               <item name="Python-learning" type="b2602c69:ProjectViewProjectNode" />
               <item name="Python-learning" type="462c0819:PsiDirectoryNode" />
               <item name="modules training" type="462c0819:PsiDirectoryNode" />
-              <item name="enum module" type="462c0819:PsiDirectoryNode" />
+              <item name="python_image_library" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Python-learning" type="b2602c69:ProjectViewProjectNode" />
@@ -177,7 +144,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.threa">
+  <component name="RunManager" selected="Python.img">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -275,6 +242,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="img" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules training/logging module" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Python-learning" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules training/python_image_library/img.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="json_placeholder" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -288,23 +272,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Python-learning" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules training/requests/json_placeholder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="test_calculator" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules training/logging module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Python-learning" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my exercises/train tests/tests/test_calculator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -327,19 +294,19 @@
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.test_calculator" />
-      <item index="1" class="java.lang.String" itemvalue="Python.json_placeholder" />
-      <item index="2" class="java.lang.String" itemvalue="Python.threa" />
-      <item index="3" class="java.lang.String" itemvalue="Python.enum_learning" />
-      <item index="4" class="java.lang.String" itemvalue="Python.enum_flag" />
+      <item index="0" class="java.lang.String" itemvalue="Python.json_placeholder" />
+      <item index="1" class="java.lang.String" itemvalue="Python.threa" />
+      <item index="2" class="java.lang.String" itemvalue="Python.enum_learning" />
+      <item index="3" class="java.lang.String" itemvalue="Python.enum_flag" />
+      <item index="4" class="java.lang.String" itemvalue="Python.img" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.threa" />
-        <item index="1" class="java.lang.String" itemvalue="Python.enum_flag" />
-        <item index="2" class="java.lang.String" itemvalue="Python.enum_learning" />
-        <item index="3" class="java.lang.String" itemvalue="Python.json_placeholder" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test_calculator" />
+        <item index="0" class="java.lang.String" itemvalue="Python.img" />
+        <item index="1" class="java.lang.String" itemvalue="Python.threa" />
+        <item index="2" class="java.lang.String" itemvalue="Python.enum_flag" />
+        <item index="3" class="java.lang.String" itemvalue="Python.enum_learning" />
+        <item index="4" class="java.lang.String" itemvalue="Python.json_placeholder" />
       </list>
     </recent_temporary>
   </component>
@@ -378,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504037214326</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="PIL learning">
+      <created>1504640034020</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1504640034020</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -414,13 +388,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1040" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18119748" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22258064" sideWeight="0.28466386" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22258064" sideWeight="0.71533614" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22258064" sideWeight="0.2904412" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22258064" sideWeight="0.70955884" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -464,20 +438,14 @@
     <MESSAGE value="Requests check ConnectionError exception" />
     <MESSAGE value="Requests module basic exercises." />
     <MESSAGE value="Enum module learning" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enum module learning" />
+    <MESSAGE value="PIL learning" />
+    <option name="LAST_COMMIT_MESSAGE" value="PIL learning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules training/logging module/logging_basics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules training/logging module/logging_basics.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -678,10 +646,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules training/enum module/enum_flag.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="221">
           <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -689,10 +657,18 @@
     <entry file="file://$PROJECT_DIR$/modules training/threading_module/threa">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules training/python_image_library/img.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
